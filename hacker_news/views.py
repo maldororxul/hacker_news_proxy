@@ -44,6 +44,8 @@ class HackerNews:
         modified = elem.text
         # use set to exclude repeatable words
         for word in set(pattern.findall(elem.text)):
+            if suffix in word:
+                continue
             modified = modified.replace(word, f'{word}{suffix}')
         elem.string.replace_with(modified)
 
